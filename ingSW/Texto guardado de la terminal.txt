@@ -1,0 +1,41 @@
+Last login: Mon Sep  1 17:17:17 on console
+/dev/fd/12:25: command not found: compdef
+braulio@MacBook-Air-de-Braulio ~ % CDM terminal
+zsh: command not found: CDM
+braulio@MacBook-Air-de-Braulio ~ % CDM Terminal
+zsh: command not found: CDM
+braulio@MacBook-Air-de-Braulio ~ % CMD Terminal
+zsh: command not found: CMD
+braulio@MacBook-Air-de-Braulio ~ % git --version
+braulio@MacBook-Air-de-Braulio ~ % git config --global user.email carreonriojas@gmail.com
+braulio@MacBook-Air-de-Braulio ~ % git config --global user.name braulio                 
+braulio@MacBook-Air-de-Braulio ~ % git config --global init.defaultBranch main
+braulio@MacBook-Air-de-Braulio ~ % 
+braulio@MacBook-Air-de-Braulio ~ % git config --global --list
+user.name=braulio
+user.email=carreonriojas@gmail.com
+init.defaultbranch=main
+braulio@MacBook-Air-de-Braulio ~ % 
+braulio@MacBook-Air-de-Braulio ~ % cd Documents 
+braulio@MacBook-Air-de-Braulio Documents % cd 
+~\$eguntasPRLOG.docx
+1app.zip
+app/
+app.zip
+Arduino/
+Copia\ de\ Formacion_Equipo.docx
+Copia\ de\ ingSW/
+Formacion_Equipo.docx
+MODELO\ DE\ PROGRAMACIÓN\ FUNCIONAL.docx
+fpdf186.zip
+hechos_3.docx
+IDC/
+ingSW/
+ingSW.zip
+PreguntasPROLOG.docx
+braulio@MacBook-Air-de-Braulio Documents % cd ingSW        
+braulio@MacBook-Air-de-Braulio ingSW % cd app 
+braulio@MacBook-Air-de-Braulio app % git init         
+Inicializado repositorio Git vacío en /Users/braulio/Documents/ingSW/app/.git/
+braulio@MacBook-Air-de-Braulio app % 
+braulio@MacBook-Air-de-Braulio app % 
