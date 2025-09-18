@@ -76,9 +76,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar_usuario'])
 }
 
 // Eliminar usuario
-if (isset($_GET['eliminar'])) {
-    $id = $_GET['eliminar'];
-    $stmt = $conexion->prepare("DELETE FROM usuarios WHERE id = ?");
+//if (isset($_GET['eliminar'])) {
+  //  $id = $_GET['eliminar'];
+   // $stmt = $conexion->prepare("DELETE FROM usuarios WHERE id = ?");
+   // $stmt->execute([$id]);
+   // header("Location: usuarios.php");
+   // exit;
+//}
+
+// Cambiar estatus de usuario (Desactivar/Activar)
+if (isset($_GET['desactivar'])) {
+    $id = $_GET['desactivar'];
+    // Se establece el estatus a 0 (inactivo)
+    $stmt = $conexion->prepare("UPDATE usuarios SET status = 0 WHERE id = ?");
+    $stmt->execute([$id]);
+    header("Location: usuarios.php");
+    exit;
+}
+
+if (isset($_GET['activar'])) {
+    $id = $_GET['activar'];
+    // Se establece el estatus a 1 (activo)
+    $stmt = $conexion->prepare("UPDATE usuarios SET status = 1 WHERE id = ?");
     $stmt->execute([$id]);
     header("Location: usuarios.php");
     exit;
@@ -185,29 +204,40 @@ include('../templates/cabecera.php');
         <?php endif; ?>
 
         <!-- Lista de usuarios -->
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($usuarios as $u): ?>
-                    <tr>
-                        <td><?= $u['id']; ?></td>
-                        <td><?= htmlspecialchars($u['username']); ?></td>
-                        <td><?= ucfirst($u['rol']); ?></td>
-                        <td>
-                            <a href="usuarios.php?editar=<?= $u['id']; ?>" class="btn btn-sm btn-primary">✏️ Editar</a>
-                            <a href="usuarios.php?eliminar=<?= $u['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar este usuario?')">🗑️ Eliminar</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+       <table class="table table-bordered table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($usuarios as $u): ?>
+            <tr>
+                <td><?= $u['id']; ?></td>
+                <td><?= htmlspecialchars($u['username']); ?></td>
+                <td><?= ucfirst($u['rol']); ?></td>
+                <td>
+                    <span class="badge <?= $u['status'] == 1 ? 'bg-success' : 'bg-secondary'; ?>">
+                        <?= $u['status'] == 1 ? 'Activo' : 'Inactivo'; ?>
+                    </span>
+                </td>
+                <td>
+                    <a href="usuarios.php?editar=<?= $u['id']; ?>" class="btn btn-sm btn-primary">✏️ Editar</a>
+                    
+                    <?php if ($u['status'] == 1): ?>
+                        <a href="usuarios.php?desactivar=<?= $u['id']; ?>" class="btn btn-sm btn-warning" onclick="return confirm('¿Desactivar este usuario?')">❌ Desactivar</a>
+                    <?php else: ?>
+                        <a href="usuarios.php?activar=<?= $u['id']; ?>" class="btn btn-sm btn-success" onclick="return confirm('¿Activar este usuario?')">✔️ Activar</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
 
         <a href="index.php" class="btn btn-secondary mt-3">⬅ Volver al panel</a>
     </div>
