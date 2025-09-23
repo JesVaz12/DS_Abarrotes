@@ -1,0 +1,67 @@
+/* Estilos para contenedores de paneles simples */
+.card-panel {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+h2 {
+    background: linear-gradient(135deg, #6a5d7b 0%, #a497bf 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Estilos de la tabla */
+.table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* --- Estilos para botones de acción --- */
+
+/* Botón Verde (Aprobar) */
+.btn-aprobar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+.btn-aprobar:hover {
+    background-color: #218838;
+}
+
+/* Botones Rojos (Rechazar, Dar de baja) */
+.btn-rechazar, .btn-baja {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.btn-rechazar:hover, .btn-baja:hover {
+    background-color: #c82333;
+}
+
+/* Botón Morado Oscuro (Agregar) */
+.btn-agregar, .btn-success {
+    background-color: #6a5d7b;
+    color: white;
+    border: none;
+}
+.btn-agregar:hover, .btn-success:hover {
+    background-color: #55486a;
+}
+
+/* Estilo para mensajes de alerta */
+.alerta {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

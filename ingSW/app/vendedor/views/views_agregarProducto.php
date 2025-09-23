@@ -1,38 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Agregar Producto</title>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .card-panel {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 40px;
-        }
-        h2 {
-            background: linear-gradient(135deg, #6a5d7b, #a497bf);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-        .form-control {
-            border-radius: 10px;
-        }
-        .btn-success {
-            background-color: #6a5d7b;
-            border: none;
-        }
-        .btn-success:hover {
-            background-color: #55486a;
-        }
-    </style>
+    <title>Panel del Administrador</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/estilos-globales.css">
+    <link rel="stylesheet" href="../css/estilos-panel.css">
+
 </head>
+<body>
+
 
 <body>
 <div class="container">

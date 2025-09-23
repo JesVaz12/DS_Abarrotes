@@ -1,0 +1,45 @@
+/* Estilos globales para toda la aplicación */
+body {
+    background-color: #f9f3f3; /* Un fondo neutro para ambos paneles */
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #f4f4f4 !important; /* Un color base para la navbar */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand,
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: #dc3545 !important;
+}
+
+.navbar img {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-outline-success {
+    border-radius: 10px;
+    color: #6a5d7b;
+    border-color: #6a5d7b;
+}
+
+.btn-outline-success:hover {
+    background-color: #6a5d7b;
+    color: white;
+}
+
+.container {
+    margin-top: 40px;
+}
