@@ -84,9 +84,9 @@ if ($_SESSION['login_attempts'] >= 5 && (time() - $_SESSION['last_attempt_time']
     // 4. Valida el formato del nombre de usuario (solo alfanuméricos y guion bajo).
     } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
         $mensaje = "El usuario solo debe contener letras, números y guiones bajos.";
-    // 5. Valida la longitud máxima de la contraseña (PHP usa hasta 72 caracteres para bcrypt).
-    } elseif (strlen($password) > 72) {
-        $mensaje = "La contraseña no debe exceder los 72 caracteres.";
+    // 5. Valida la longitud de la contraseña (entre 8 y 72 caracteres).
+    } elseif (strlen($password) < 8 || strlen($password) > 72) {
+        $mensaje = "La contraseña debe tener entre 8 y 72 caracteres.";
     
     // ---- PROCESO DE AUTENTICACIÓN ----
     

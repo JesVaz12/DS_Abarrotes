@@ -22,12 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nuevoUsuario = trim($_POST['username'] ?? '');
     $nuevaPassword = $_POST['password'] ?? '';
 
+    // ...
     if ($nuevoUsuario && strlen($nuevoUsuario) <= 50) {
         if ($nuevaPassword) {
-            $hash = password_hash($nuevaPassword, PASSWORD_DEFAULT);
-            $stmt = $conexion->prepare("UPDATE usuarios SET username = ?, password = ? WHERE username = ?");
-            $stmt->execute([$nuevoUsuario, $hash, $usuarioSesion]);
+            if (strlen($nuevaPassword) < 8 || strlen($nuevaPassword) > 72) {
+                $mensaje = "⚠ La contraseña debe tener entre 8 y 72 caracteres.";
+            } else {
+                $hash = password_hash($nuevaPassword, PASSWORD_DEFAULT);
+                $stmt = $conexion->prepare("UPDATE usuarios SET username = ?, password = ? WHERE username = ?");
+                $stmt->execute([$nuevoUsuario, $hash, $usuarioSesion]);
+                $mensaje = "✅ Datos actualizados correctamente.";
+            }
         } else {
+            // ...
             $stmt = $conexion->prepare("UPDATE usuarios SET username = ? WHERE username = ?");
             $stmt->execute([$nuevoUsuario, $usuarioSesion]);
         }
@@ -42,5 +49,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include('../templates/cabecera.php');
 require_once 'views/views_configuracion.php';
-?>
-

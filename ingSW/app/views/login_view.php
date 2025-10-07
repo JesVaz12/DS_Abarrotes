@@ -92,9 +92,12 @@
                     <div class="mb-3">
                         <label class="form-label">Contraseña</label>
                         <input type="password" class="form-control"
-                               name="password"
-                               placeholder="Contraseña"
-                               required maxlength="72" title="Máximo 72 caracteres" />
+                            name="password"
+                            placeholder="Contraseña"
+                            required 
+                            minlength="8" 
+                            maxlength="72" 
+                            title="La contraseña debe tener entre 8 y 72 caracteres" />
                     </div>
 
                     <div class="d-flex justify-content-center">
