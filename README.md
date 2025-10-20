@@ -90,6 +90,3 @@ docker-compose down
 ```bash
 docker-compose restart
 ```
-
-```
-```
