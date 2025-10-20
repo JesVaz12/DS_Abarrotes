@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  #--- Servicio de Base de Datos MariaDB ---
+  db:
+    image: mariadb:10.4
+    container_name: itemcontrol-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      # 1. Monta el .sql para importarlo automáticamente
+      - ./app/database/itemcontrol-2.sql:/docker-entrypoint-initdb.d/init.sql
+      # 2. Guarda los datos de la BD en un volumen persistente
+      - db_data:/var/lib/mysql
+    networks:
+      - itemcontrol-net
+
+  #--- Servicio de Servidor Web (Apache + PHP) ---
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    container_name: itemcontrol-web
+    restart: unless-stopped
+    ports:
+      # Mapea el puerto 8080 de tu Mac al puerto 80 del contenedor
+      - "8080:80"
+    volumes:
+      # Sincroniza tu carpeta 'app' con el directorio web del contenedor
+      - ./app:/var/www/html
+    environment:
+      # Pasa las variables de la BD a PHP
+      DB_HOST: db
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - itemcontrol-net
+
+#--- Red y Volumen ---
+networks:
+  itemcontrol-net:
+    driver: bridge
+
+volumes:
+  db_data:

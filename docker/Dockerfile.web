@@ -1,0 +1,12 @@
+# Usa la imagen oficial de PHP 8.2 con Apache
+FROM php:8.2-apache
+
+# 1. Instala la extensión de PHP para MySQL (PDO)
+RUN docker-php-ext-install pdo_mysql
+
+# 2. Habilita mod_rewrite de Apache (para URLs amigables, buena práctica)
+RUN a2enmod rewrite
+
+# 3. Copia nuestra configuración de Apache personalizada (del siguiente paso)
+# Esto le dice a Apache que use /var/www/html/public como la raíz
+COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf

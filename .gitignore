@@ -1,0 +1,9 @@
+# Ignorar el archivo de secretos
+.env
+
+# Ignorar los datos de la base de datos de Docker
+database_data/
+
+# Ignorar archivos del sistema operativo y editor
+.DS_Store
+.vscode/
