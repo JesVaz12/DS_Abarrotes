@@ -1,4 +1,3 @@
-````markdown
 # Proyecto Abarrotes AM (DS_Abarrotes)
 
 Este repositorio contiene el código fuente para un sistema de gestión de inventario, "Abarrotes AM". La aplicación está completamente dockerizada para un fácil despliegue y un entorno de desarrollo consistente.
@@ -89,7 +88,4 @@ docker-compose down
 
 ```bash
 docker-compose restart
-```
-
-```
 ```
