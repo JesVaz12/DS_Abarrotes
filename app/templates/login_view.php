@@ -1,6 +1,6 @@
-
 <!doctype html>
 <html lang="es">
+
 <head>
     <title>Iniciar Sesión</title>
     <meta charset="utf-8" />
@@ -11,15 +11,18 @@
             background-color: #f9f3f3;
             font-family: Arial, sans-serif;
         }
+
         .login-container {
             max-width: 420px;
             margin: 100px auto;
         }
+
         .card {
             border: none;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
         .card-header-title {
             text-align: center;
             font-size: 20px;
@@ -29,21 +32,27 @@
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
+
         .card-header-sub {
             text-align: center;
             background: #eee;
             padding: 20px;
         }
+
         .card-header-sub img {
             max-width: 100px;
             margin-bottom: 10px;
         }
-        .form-label, .form-text {
+
+        .form-label,
+        .form-text {
             margin-left: 5px;
         }
+
         .form-control {
             border-radius: 10px;
         }
+
         .btn-login {
             background-color: #6a5d7b;
             border: none;
@@ -51,9 +60,11 @@
             padding: 10px 25px;
             font-size: 16px;
         }
+
         .btn-login:hover {
             background-color: #55486a;
         }
+
         .error-message {
             color: red;
             text-align: center;
@@ -71,7 +82,7 @@
                     SUPER ABARROTES AM
                 </div>
                 <div class="card-header-sub">
-                    <img src="imagenes/perfil.png" alt="Logo">
+                    <img src="/public/imagenes/perfil.png" alt="Logo">
                     <p class="mb-0">Ingresa tus credenciales</p>
                 </div>
                 <div class="card-body">
@@ -84,9 +95,9 @@
                     <div class="mb-3">
                         <label class="form-label">Usuario</label>
                         <input type="text" class="form-control"
-                               name="username"
-                               placeholder="Usuario"
-                               required maxlength="50" pattern="[a-zA-Z0-9_]{1,50}" title="Solo letras, números y guiones bajos (máx 50 caracteres)" />
+                            name="username"
+                            placeholder="Usuario"
+                            required maxlength="50" pattern="[a-zA-Z0-9_]{1,50}" title="Solo letras, números y guiones bajos (máx 50 caracteres)" />
                     </div>
 
                     <div class="mb-3">
@@ -94,9 +105,9 @@
                         <input type="password" class="form-control"
                             name="password"
                             placeholder="Contraseña"
-                            required 
-                            minlength="8" 
-                            maxlength="72" 
+                            required
+                            minlength="8"
+                            maxlength="72"
                             title="La contraseña debe tener entre 8 y 72 caracteres" />
                     </div>
 
@@ -110,4 +121,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
