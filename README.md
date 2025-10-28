@@ -32,7 +32,7 @@ Sigue estos pasos para levantar la aplicación localmente:
 **1. Clonar el Repositorio**
 
 ```bash
-git clone [https://github.com/JesVaz12/DS_Abarrotes.git](https://github.com/JesVaz12/DS_Abarrotes.git)
+git clone https://github.com/JesVaz12/DS_Abarrotes.git
 cd DS_Abarrotes
 ````
 
