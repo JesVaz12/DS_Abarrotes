@@ -1,12 +1,27 @@
 # Usa la imagen oficial de PHP 8.2 con Apache
 FROM php:8.2-apache
 
-# 1. Instala la extensión de PHP para MySQL (PDO)
-RUN docker-php-ext-install pdo_mysql
+# 1. Instalar dependencias del sistema necesarias
+# (Git, Unzip para Composer, y librerías gráficas para el Captcha)
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# 2. Habilita mod_rewrite de Apache (para URLs amigables, buena práctica)
+# 2. Configurar e instalar extensiones de PHP
+# (Configuramos GD para que acepte JPG y Fuentes, e instalamos PDO para la BD)
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo_mysql
+
+# 3. Habilitar mod_rewrite de Apache
 RUN a2enmod rewrite
 
-# 3. Copia nuestra configuración de Apache personalizada (del siguiente paso)
-# Esto le dice a Apache que use /var/www/html/public como la raíz
+# 4. Instalar Composer automáticamente
+# (Copiamos el ejecutable desde la imagen oficial de Composer)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# 5. Copiar nuestra configuración de Apache
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
