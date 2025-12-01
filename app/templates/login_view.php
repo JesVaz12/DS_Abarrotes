@@ -14,7 +14,7 @@
 
         .login-container {
             max-width: 420px;
-            margin: 100px auto;
+            margin: 60px auto;
         }
 
         .card {
@@ -44,15 +44,6 @@
             margin-bottom: 10px;
         }
 
-        .form-label,
-        .form-text {
-            margin-left: 5px;
-        }
-
-        .form-control {
-            border-radius: 10px;
-        }
-
         .btn-login {
             background-color: #6a5d7b;
             border: none;
@@ -60,7 +51,6 @@
             padding: 10px 25px;
             font-size: 16px;
             color: white;
-            /* Aseguré que el texto sea blanco */
         }
 
         .btn-login:hover {
@@ -74,7 +64,6 @@
             margin-top: 15px;
         }
 
-        /* Nuevo estilo para el enlace de recuperación */
         .forgot-password {
             color: #6a5d7b;
             text-decoration: none;
@@ -89,14 +78,11 @@
     </style>
 </head>
 
-
 <body>
     <div class="login-container">
         <form method="post" autocomplete="off">
             <div class="card">
-                <div class="card-header-title">
-                    SUPER ABARROTES AM
-                </div>
+                <div class="card-header-title">SUPER ABARROTES AM</div>
                 <div class="card-header-sub">
                     <img src="/public/imagenes/perfil.png" alt="Logo">
                     <p class="mb-0">Ingresa tus credenciales</p>
@@ -112,37 +98,38 @@
 
                     <div class="mb-3">
                         <label class="form-label">Usuario</label>
-                        <input type="text" class="form-control"
-                            name="username"
-                            placeholder="Usuario"
-                            required maxlength="50" pattern="[a-zA-Z0-9_]{1,50}" title="Solo letras, números y guiones bajos (máx 50 caracteres)" />
+                        <input type="text" class="form-control" name="username" placeholder="Usuario" required maxlength="50">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control"
-                            name="password"
-                            placeholder="Contraseña"
-                            required
-                            minlength="8"
-                            maxlength="72"
-                            title="La contraseña debe tener entre 8 y 72 caracteres" />
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
                     </div>
 
+                    <div class="mb-3 text-center">
+                        <label class="form-label fw-bold" style="color: #6a5d7b;">Código de Seguridad</label>
+
+                        <div class="mb-2 d-flex justify-content-center">
+                            <?php if (isset($_SESSION['captcha_img'])): ?>
+                                <img src="<?php echo $_SESSION['captcha_img']; ?>" alt="Captcha" style="border-radius: 8px; border: 1px solid #ccc; max-width: 100%;">
+                            <?php else: ?>
+                                <p class="text-danger small">Error cargando captcha</p>
+                            <?php endif; ?>
+                        </div>
+
+                        <input type="text" class="form-control text-center" name="captcha" placeholder="Escribe las letras de la imagen" required autocomplete="off">
+                    </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-login">Iniciar sesión</button>
                     </div>
 
                     <div class="text-center mt-3">
-                        <a href="recuperar.php" class="forgot-password">
-                            ¿Olvidaste tu contraseña?
-                        </a>
+                        <a href="recuperar.php" class="forgot-password">¿Olvidaste tu contraseña?</a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
