@@ -59,16 +59,32 @@
             border-radius: 10px;
             padding: 10px 25px;
             font-size: 16px;
+            color: white;
+            /* Aseguré que el texto sea blanco */
         }
 
         .btn-login:hover {
             background-color: #55486a;
+            color: white;
         }
 
         .error-message {
             color: red;
             text-align: center;
             margin-top: 15px;
+        }
+
+        /* Nuevo estilo para el enlace de recuperación */
+        .forgot-password {
+            color: #6a5d7b;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #4a3d5b;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -90,7 +106,9 @@
                         <div class="error-message"><?php echo htmlspecialchars($mensaje); ?></div>
                     <?php endif; ?>
 
-                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>" />
+                    <?php if (isset($_SESSION['csrf_token'])): ?>
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>" />
+                    <?php endif; ?>
 
                     <div class="mb-3">
                         <label class="form-label">Usuario</label>
@@ -113,6 +131,12 @@
 
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-login">Iniciar sesión</button>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="recuperar.php" class="forgot-password">
+                            ¿Olvidaste tu contraseña?
+                        </a>
                     </div>
                 </div>
             </div>

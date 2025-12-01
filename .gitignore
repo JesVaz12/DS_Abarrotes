@@ -4,6 +4,9 @@
 # Ignorar los datos de la base de datos de Docker
 database_data/
 
+# Carpetas de dependencias (se instalan con composer install)
+app/vendor/
+
 # Ignorar archivos del sistema operativo y editor
 .DS_Store
 .vscode/
